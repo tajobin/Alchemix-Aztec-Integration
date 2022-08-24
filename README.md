@@ -26,7 +26,7 @@ The collateralization ratio of the pool will decrease as yield is gained. All us
 
 If users wish to take out more debt they can simply swap to another pool that has a suitable collateralization ratio.
 
-### Aggregation pool
+### Aggregation Pools
 The bridge provided [here](https://github.com/tajobin/Alchemix-Aztec-Integration/blob/main/src/bridges/alchemix/AlchemixPool.sol) allows for multiply different types of pools. I have built and tested a pool that supports all yield strategies available on Alchemix. For a pool to deployed an admin (possibly the same admin as the admin in the alchemist) has to call the addPool() function on the bridge with the preferred parameters to configure a pool. The admin also has to whitelist the pool that he has initialized so that it can interact with the alchemist and act as an account.
 
 The two flows supported are as following:
@@ -60,7 +60,7 @@ The current contracts is a base that can be extended with more functionality.
 ##### Improvments to Testing
 More in depth testing could be made by more advanced simulations. We could also add end to end testing with the aztec deployed rollup processor instead of having the test contract act as the rollup processor. Aztec has provided tools to simulate proofs and tests integration with the actual rollup processor.
 
-### Funding pool
+### Funding Pools
 To showcase the potential that aztec-connect provides I have also built an additional pool that the admin can deploy and connect to the bridge.
 
 This is a pool that can be used for users to continuously provide funds to a beneficiary. In this pool the yield created is send to a beneficiary. This could be used to create pools that fund a public good or pools that support grants or whatever a community wishes to fund. In the [example](https://github.com/tajobin/Alchemix-Aztec-Integration/blob/main/src/test/bridges/alchemix/AlchemistFundingUnitTest.sol) that is provide the pool funds the official gitcoin matching pool. 
