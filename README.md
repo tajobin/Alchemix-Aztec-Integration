@@ -53,7 +53,7 @@ The contract can be extended to provide more functionality.
 
 It could for example automatically take out a flashloan swap it to the alToken and repay the debt instead of liquidating if that is cheaper.
 
-The contract could allow for automatically rebalancing pools that aims to stay at a specified collaterlization ratio.
+The contract could allow for automatically rebalancing pools that aims to stay at a specified collateralization ratio.
 
 The current contracts is a base that can be extended with more functionality.
 
@@ -61,9 +61,9 @@ The current contracts is a base that can be extended with more functionality.
 More in depth testing could be made by more advanced simulations. We could also add end to end testing with the aztec deployed rollup processor instead of having the test contract act as the rollup processor. Aztec has provided tools to simulate proofs and tests integration with the actual rollup processor.
 
 ### Funding pool
-To showcase the potential that aztec-connect provides I have also built an additional pool that the admin can deploy and conenct to the bridge.
+To showcase the potential that aztec-connect provides I have also built an additional pool that the admin can deploy and connect to the bridge.
 
-This is a pool that can be used for users to continiously provide funds to a beneficiary. In this pool the yield created is send to a beneficiary. This could be used to create pools that fund a public good or pools that support grants or whatever a community wishes to fund. In the [example] that is provide the pool funds the official gitcoin matching pool. 
+This is a pool that can be used for users to continuously provide funds to a beneficiary. In this pool the yield created is send to a beneficiary. This could be used to create pools that fund a public good or pools that support grants or whatever a community wishes to fund. In the [example] that is provide the pool funds the official gitcoin matching pool. 
 
 The current contract is provided as an example of what is possible and has not been tested.
 
@@ -72,7 +72,9 @@ The flow of the funding pool is the same as the aggregation pool with the differ
 The contract provided has very basic functionality and could be extended to provide more versatility. It could for example give users the ability to fund the beneficiary once and then earn the yield themselves to get their debt back. 
 
 To run the example provided do the following:
-forge test --match-contract test
+```
+forge test --fork-url 'https://mainnet.infura.io/v3/9ccb2a35e7f64383ac06acbbe33e1a29' --fork-block-number 15392782 --match-contract AlchemistFundingUnitTest
+```
 
 ### Ideas for future pools
 I would also like to highlight some interesting pools that could be supported by an aztec-bridge.
