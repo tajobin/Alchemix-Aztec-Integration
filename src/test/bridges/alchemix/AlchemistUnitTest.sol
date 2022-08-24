@@ -12,7 +12,6 @@ import {IAlchemistV2} from "../../../interfaces/alchemix/IAlchemistV2.sol";
 import {AlchemixBridge} from "../../../bridges/alchemix/AlchemixBridge.sol";
 import {AlchemixPool} from "../../../bridges/alchemix/AlchemixPool.sol";
 
-import "forge-std/console2.sol";
 
 interface IWhitelist{
   function add(address caller) external;
@@ -195,8 +194,6 @@ contract AlchemistUnitTest is BridgeTestBase {
             (depositFirstCohort/10)*
             (1e18 + yieldGained.PhaseOne + yieldGained.PhaseTwo)/1e18 - debtFirstCohort/10;
 
-        console2.log('colOutCohortOne', colOutCohortOne);
-        console2.log('expectedColOutCohortOne', expectedColOutCohortOne);
 
         assertGe(colOutCohortOne, expectedColOutCohortOne*0.999e18/1e18);
     
@@ -211,8 +208,6 @@ contract AlchemistUnitTest is BridgeTestBase {
             (depositSecondCohort/20)*
             (1e18 + yieldGained.PhaseTwo + yieldGained.PhaseThree)/1e18 - debtSecondCohort/20;
 
-        console2.log('colOutCohortTwo', colOutCohortTwo);
-        console2.log('expectedColOutCohortTwo', expectedColOutCohortTwo);
 
         assertGe(colOutCohortTwo, expectedColOutCohortTwo*0.999e18/1e18);
     }
@@ -350,7 +345,6 @@ contract AlchemistUnitTest is BridgeTestBase {
         vm.startPrank(pool); //pretend to be pool to pass whitelist check
         (uint256 colBefore, int256 debt, uint256 shares, uint256 tokensPerShare) = _getPoolInfo(pool);
         vm.stopPrank();
-        console2.log('col before simulated y    ', colBefore);
 
         uint256 collateralInUnderlying = shares*tokensPerShare/1e18;
         uint256 yieldGainedInPercent = 0.1e18;

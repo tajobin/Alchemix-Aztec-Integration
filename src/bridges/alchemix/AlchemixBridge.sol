@@ -8,14 +8,12 @@ import {BridgeBase} from "../base/BridgeBase.sol";
 import {AlchemixPool} from "./AlchemixPool.sol";
 import {AlchemixFundingPool} from "./AlchemixFundingPool.sol";
 
-import "forge-std/console2.sol";
 
 /**
- * @title An example bridge contract.
- * @author Aztec Team
- * @notice You can use this contract to immediately get back what you've deposited.
- * @dev This bridge demonstrates the flow of assets in the convert function. This bridge simply returns what has been
- *      sent to it.
+ * @title A bridge contract for Alchemix 
+ * @author Tajobin 
+ * @dev This bridge is built to integrate Alchemix with aztec-connect 
+ *      
  */
 contract AlchemixBridge is BridgeBase {
     address public immutable ADMIN;
@@ -26,6 +24,18 @@ contract AlchemixBridge is BridgeBase {
         ADMIN = _admin;
     }
 
+   /**
+    @notice Function that adds an aggregation pool
+    @dev Only an admin can add a pool, the admin must also withlist the pool on the alcheemist contract
+    @param _yToken - The yield token that the pool will use 
+    @param _underlyingToken - The underlying token that the pool will use to earn yield.
+    @param _alchemist - The address of the alchemist to use.
+    @param _alToken - The alToken that debt is taken out in
+    @param _colRatio - The initial col ratio 
+    @param _name - name of ERC20
+    @param _symbol - symbol of ERC20
+    @return - the address of the pool
+    */ 
     function addPool(
         address _yToken, 
         address _underlyingToken, 
@@ -53,6 +63,19 @@ contract AlchemixBridge is BridgeBase {
         return address(alchemixPool);
     }
 
+   /**
+    @notice Function that adds an funding pool
+    @dev Only an admin can add a pool, the admin must also withlist the pool on the alcheemist contract
+    @param _yToken - The yield token that the pool will use 
+    @param _underlyingToken - The underlying token that the pool will use to earn yield.
+    @param _alchemist - The address of the alchemist to use
+    @param _alToken - The alToken that debt is taken out in
+    @param _beneficiary - The address of the beneficiary that will receive funds 
+    @param _colRatio - The initial col ratio 
+    @param _name - name of ERC20
+    @param _symbol - symbol of ERC20
+    @return - the address of the pool
+    */ 
     function addFundingPool(
         address _yToken, 
         address _underlyingToken, 
@@ -82,6 +105,21 @@ contract AlchemixBridge is BridgeBase {
         return address(alchemixFundingPool);
     }
 
+    /**
+      @notice Function that either deposits and mints or repays and withdraws
+      @dev The flow of this functions is based on the type of input and output assets.
+     
+      @param _inputAssetA - Either the underlying token when depositing or shareToken when withdrawing 
+      @param _inputAssetB - Allways empty 
+      @param _outputAssetA - Underlying token when withdrawing alToken when depositing
+      @param _outputAssetB - shareToken when depositing and empty when withdrawing
+      @param _totalInputValue - amount of underlying tokens when depositing and share tokens when withdrawing 
+      @param _interactionNonce - Globablly unique identifier for this bridge call
+      @param _auxData - selects which pool to use
+      @return outputValueA - Amount of shareTokens when depositing and underlying token when withdrawing
+
+      @return outputValueB - Amount of debt taken out when minting and nothing when withdrawing
+     */
     function convert(
         AztecTypes.AztecAsset calldata _inputAssetA,
         AztecTypes.AztecAsset calldata _inputAssetB,
