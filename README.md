@@ -69,7 +69,7 @@ The current contract is provided as an example of what is possible and has not b
 
 The flow of the funding pool is the same as the aggregation pool with the difference that the debt taken out and yield earned is send to the beneficiary. Users can at any point exit and get their collateral back (minus the debt) if they wish to stop funding the beneficiary.
 
-The contract provided has very basic functionality and could be extended to provide more versatility. It could for example give users the ability to fund the beneficiary once and then earn the yield themselves to get their debt back. 
+The contract provided has very basic functionality and could be extended to provide more versatility. It could for example give users the ability to fund the beneficiary once and then earn the yield themselves to earn back the tokens they spent on supporting a beneficiary. 
 
 To run the example provided do the following:
 ```
