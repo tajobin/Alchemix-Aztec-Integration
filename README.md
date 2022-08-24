@@ -1,7 +1,7 @@
 
 # Alchemix X Aztec - Money Legos Hackathon
 
-This repository is cloned from  Aztec's official Aztec-Connect repository. Files that are not needed for the Alchemix Integration has been removed. Files in folder X and Y have been built for this hackathon the rest is provided by the Aztec team to test bridge contracts. 
+This repository is cloned from  [Aztec's official Aztec-Connect repository](https://github.com/AztecProtocol/aztec-connect-bridges). Files that were not needed for the Alchemix Integration has been removed. Files in the folders [bridge/alchemix](https://github.com/tajobin/Alchemix-Aztec-Integration/tree/main/src/bridges/alchemix) and [test/bridge/alchemix](https://github.com/tajobin/Alchemix-Aztec-Integration/tree/main/src/test/bridges/alchemix) have been built for this hackathon the rest is provided by the Aztec team to test bridge contracts. 
     
 ## Introduction
 
