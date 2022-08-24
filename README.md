@@ -18,14 +18,16 @@ Read More about Aztec [here](https://docs.aztec.network)
 ## Alchemist Pools
 By building a bridge for Alchemix we aggregate users L1 transactions. The most basic application of this is to simply build pools on top of an alchemist contract. Each pool will have one account on the alchemist contract. A pool would be initialized by an admin at a specific collateralization, users would then enter and receive their respective shares and alToken in accordance with the current collateralization of the pool.
 
-Example: An admin initialized a pool with a collateralization ratio of 200%, the admin specifies the alchemist contract and yield token. Users on aztec can now aggregate their interactions with this pool and each receive their respective shares and alUSD. Users shares in the pools are minted as ERC-20 tokens that are sent back to users on Aztec together with their minted alUSD. Users can at any point exit the pool and withdraw their collateral and repay their debt.
+#### Example
+
+An admin initialized a pool with a collateralization ratio of 200%, the admin specifies the alchemist contract and yield token. Users on aztec can now aggregate their interactions with this pool and each receive their respective shares and alUSD. Users shares in the pools are minted as ERC-20 tokens that are sent back to users on Aztec together with their minted alUSD. Users can at any point exit the pool and withdraw their collateral and repay their debt.
 
 The collateralization ratio of the pool will decrease as yield is gained. All users entering into the pool will have to adhere to the current collateralization ratio.
 
 If users wish to take out more debt they can simply swap to another pool that has a suitable collateralization ratio.
 
 ### Aggregation pool
-The bridge provided [here] allows for multiply different types of pools. I have built and tested a pool that supports all yield strategies availble on Alchemix. For a pool to deployed an admin (possibly the same admin as the admin in the alchemist) has to call the ```addPool()``` function on the bridge with the prefered paramters to configure a pool. The admin also has to whitelist the pool that he has initlized so that it can interact with the alchemist and act as an account.
+The bridge provided [here](https://github.com/tajobin/Alchemix-Aztec-Integration/blob/main/src/bridges/alchemix/AlchemixPool.sol) allows for multiply different types of pools. I have built and tested a pool that supports all yield strategies available on Alchemix. For a pool to deployed an admin (possibly the same admin as the admin in the alchemist) has to call the addPool() function on the bridge with the preferred parameters to configure a pool. The admin also has to whitelist the pool that he has initialized so that it can interact with the alchemist and act as an account.
 
 The two flows supported are as following:
 #### Deposit and mint: 
@@ -39,9 +41,11 @@ Aztec-connect aggregate users that want to repay and withdraw, users deposit an 
 
 To run the tests on the aggregation pool do the following:
 
-clone repo
+```
+git clone git@github.com:tajobin/Alchemix-Aztec-Integration.git
 yarn setup
-forge test --match-contract Unit test.
+forge test --fork-url 'https://mainnet.infura.io/v3/9ccb2a35e7f64383ac06acbbe33e1a29' --fork-block-number 15392782 --match-contract AlchemistUnitTest
+```
 
 #### Limitations and improvments
 ##### Improvments to Contract
