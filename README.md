@@ -63,7 +63,7 @@ More in depth testing could be made by more advanced simulations. We could also 
 ### Funding pool
 To showcase the potential that aztec-connect provides I have also built an additional pool that the admin can deploy and connect to the bridge.
 
-This is a pool that can be used for users to continuously provide funds to a beneficiary. In this pool the yield created is send to a beneficiary. This could be used to create pools that fund a public good or pools that support grants or whatever a community wishes to fund. In the [example] that is provide the pool funds the official gitcoin matching pool. 
+This is a pool that can be used for users to continuously provide funds to a beneficiary. In this pool the yield created is send to a beneficiary. This could be used to create pools that fund a public good or pools that support grants or whatever a community wishes to fund. In the [example](https://github.com/tajobin/Alchemix-Aztec-Integration/blob/main/src/test/bridges/alchemix/AlchemistFundingUnitTest.sol) that is provide the pool funds the official gitcoin matching pool. 
 
 The current contract is provided as an example of what is possible and has not been tested.
 
@@ -79,6 +79,6 @@ forge test --fork-url 'https://mainnet.infura.io/v3/9ccb2a35e7f64383ac06acbbe33e
 ### Ideas for future pools
 I would also like to highlight some interesting pools that could be supported by an aztec-bridge.
 
-Yield boosting pools where the yield and/or debt is used to earn yield. This could either be done by doubling down on the functionality provided by alchemix to create leveraged positions or by earning yield else where. The advantage of doing this through an aztec-bridge is that users share the gas costs of expensive L1 interactions. A pool could for example be built that takes out a flashloan to create a leveraged position on alchemix where the debt taken is sold to cover the flashloan. 
+Yield boosting pools where the yield and/or debt is used to earn yield. This could either be done by doubling down on the functionality provided by alchemix to create leveraged positions or by earning yield elsewhere. The advantage of doing this through an aztec-bridge is that users share the gas costs of expensive L1 interactions. A pool could for example be built that takes out a flashloan to create a leveraged position on alchemix where the debt taken is sold to cover the flashloan. 
 
 
