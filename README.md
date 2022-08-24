@@ -76,7 +76,7 @@ To run the example provided do the following:
 forge test --fork-url 'https://mainnet.infura.io/v3/9ccb2a35e7f64383ac06acbbe33e1a29' --fork-block-number 15392782 --match-contract AlchemistFundingUnitTest
 ```
 
-### Ideas for future pools
+### Yield Boosting Pools
 I would also like to highlight some interesting pools that could be supported by an aztec-bridge.
 
 Yield boosting pools where the yield and/or debt is used to earn yield. This could either be done by doubling down on the functionality provided by alchemix to create leveraged positions or by earning yield elsewhere. The advantage of doing this through an aztec-bridge is that users share the gas costs of expensive L1 interactions. A pool could for example be built that takes out a flashloan to create a leveraged position on alchemix where the debt taken is sold to cover the flashloan. 
