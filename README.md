@@ -5,24 +5,24 @@ This repository is cloned from  [Aztec's official Aztec-Connect repository](http
     
 ## Introduction
 
-This is a submission to Alchemix Money Legos Hackathon where an integration of Alchemix and Aztec-connect is achieved. By building an aztec-connect bridge contract for alchemix we can not only provide privacy and gas-savings for alchemix users but also provide new use cases where we take advantage of aztec-connects aggregating capabilities and Alchemix's "magic-money". 
+This is a submission to Alchemix Money Legos Hackathon where an integration of Alchemix and Aztec-connect is achieved. By building an aztec-connect bridge contract for alchemix we can not only provide privacy and gas-savings for alchemix users but also provide new use cases where we take advantage of aztec-connects aggregating capabilities and Alchemix's self-repaying debts. 
 
-### A brief Intro to Aztec-connect 
+### What is Aztec-connect? 
 
-Aztec-conenct is a privacy and DeFi-aggregating layer 2 solution. With Aztec-connect userrs can shield their assets to provide privacy while still being able to interact with L1 contracts through bridge contracts that aggregate L1 interactions. By aggregating L1 interactions users can reduce their gas savings up to a 100x. 
+Aztec-conenct is a privacy and DeFi-aggregating layer 2 solution. With Aztec-connect users can shield their assets to provide privacy while still being able to interact with L1 contracts through bridge contracts that aggregate L1 interactions. By aggregating L1 interactions users can reduce their gas savings up to a 100x. 
 
 With Aztec-connect L1 protocols can preserve their Layer 1 liquidity while still providing gas savings to their users.
 
 Read More about Aztec [here](https://docs.aztec.network)
 
-## Alchemix + Aztec in detail
-By building a bridge for Alchemix we aggregate users L1 transactions. The most basic application of this is to simply build pools on top of an alchemist contract. Each pool will have one accout on the alchemist contract. A pool would be initalized by an admin at a specific collaterlization, users would then enter and receive their respective shares and alToken in accordance with the current collaterlization of the pool.
+## Alchemist Pools
+By building a bridge for Alchemix we aggregate users L1 transactions. The most basic application of this is to simply build pools on top of an alchemist contract. Each pool will have one account on the alchemist contract. A pool would be initialized by an admin at a specific collateralization, users would then enter and receive their respective shares and alToken in accordance with the current collateralization of the pool.
 
-Example: An admin initalises a pool with a collaterlization ratio of 200%, the admin specifies the alchemist contract and yield token. Users on aztec can now aggregate their interactions with this pool and each receive their respective shares and alUSD. Users shares in the pools are minted as ERC-20 tokens that are sent back to users on Aztec together with their minted alUSD. Users can at any point exit the pool and withdraw their collateral and repay their debt. 
+Example: An admin initialized a pool with a collateralization ratio of 200%, the admin specifies the alchemist contract and yield token. Users on aztec can now aggregate their interactions with this pool and each receive their respective shares and alUSD. Users shares in the pools are minted as ERC-20 tokens that are sent back to users on Aztec together with their minted alUSD. Users can at any point exit the pool and withdraw their collateral and repay their debt.
 
-The collaterlization ratio of the pool will decrease as yield is gained. All users entering into the pool will have to adhere to the current collaterlizaiton ratio.
+The collateralization ratio of the pool will decrease as yield is gained. All users entering into the pool will have to adhere to the current collateralization ratio.
 
-If users wish to take out more debt they can simply swap to another pool that has a suitable collaterlization ratio.
+If users wish to take out more debt they can simply swap to another pool that has a suitable collateralization ratio.
 
 ### Aggregation pool
 The bridge provided [here] allows for multiply different types of pools. I have built and tested a pool that supports all yield strategies availble on Alchemix. For a pool to deployed an admin (possibly the same admin as the admin in the alchemist) has to call the ```addPool()``` function on the bridge with the prefered paramters to configure a pool. The admin also has to whitelist the pool that he has initlized so that it can interact with the alchemist and act as an account.
